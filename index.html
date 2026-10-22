@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vantis Mind</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Vantis Mind – strony internetowe, ebooki i systemy pozyskiwania klientów dla małych i średnich firm usługowych. Strona gotowa w 3–4 dni robocze.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: one navy column, gold hairline as the brand's single bold gesture; sections stack, cards only for services */
+:root{
+  --navy:#0F1B33; --navy-2:#16264A; --navy-3:#1E3260;
+  --gold:#C9A227; --gold-soft:#E3C766;
+  --ink:#F2EFE6; --muted:#A9B3C7; --line:rgba(201,162,39,.28);
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Manrope", "Segoe UI", system-ui, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--navy);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+a{color:var(--gold-soft)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,9vw,104px);border-top:1px solid var(--line)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.01em}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 14px}
+p{margin:0}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(15,27,51,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--navy)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
+nav a:hover{color:var(--ink)}
+@media (max-width:640px){nav .hide-sm{display:none}}
+
+/* hero */
+.hero{border-top:0;padding-block:clamp(64px,11vw,132px) clamp(56px,8vw,96px)}
+.hero h1{font-size:clamp(2.4rem,6.4vw,4.9rem);font-weight:800;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .lead{margin-top:26px;font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);max-width:52ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
+.btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;text-decoration:none;padding:15px 26px;border-radius:999px;transition:background .2s}
+.btn:hover{background:var(--gold-soft)}
+.btn-ghost{color:var(--ink);text-decoration:none;font-weight:500;padding:15px 6px;border-bottom:1px solid var(--line)}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.facts b{color:var(--ink);font-family:var(--display);font-size:1.35rem;display:block;font-weight:700}
+
+/* services */
+.head{display:grid;gap:14px;margin-bottom:44px;max-width:60ch}
+.head h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:var(--navy-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:30px;display:grid;gap:12px;align-content:start;transition:border-color .2s}
+.card:hover{border-color:var(--line)}
+.card h3{font-size:1.35rem;font-weight:700}
+.card p{color:var(--muted)}
+.card .tag{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;display:grid;gap:8px;padding-top:18px;border-top:2px solid var(--gold)}
+.steps li::before{content:"Krok " counter(s);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.steps h3{font-size:1.15rem;font-weight:700}
+.steps p{color:var(--muted);font-size:.96rem}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(28px,6vw,80px);align-items:start}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about blockquote{margin:0;font-family:var(--display);font-size:clamp(1.5rem,3vw,2.15rem);font-weight:500;line-height:1.25;color:var(--ink)}
+.about blockquote::before{content:"";display:block;width:56px;height:3px;background:var(--gold);margin-bottom:22px}
+.about .txt{display:grid;gap:16px;color:var(--muted);max-width:62ch}
+.about .txt strong{color:var(--ink)}
+
+/* contact */
+.contact{background:var(--navy-3);border-radius:18px;padding:clamp(32px,6vw,64px);display:grid;gap:20px}
+.contact h2{font-size:clamp(1.8rem,3.8vw,2.8rem);max-width:20ch}
+.contact p{color:var(--muted);max-width:56ch}
+.mail{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+.mail code{font-family:var(--body);font-size:1.15rem;color:var(--ink);background:rgba(0,0,0,.2);padding:12px 18px;border-radius:10px;user-select:all}
+.copy{background:transparent;color:var(--gold-soft);border:1px solid var(--line);border-radius:999px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer}
+.copy:hover{border-color:var(--gold)}
+
+footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);font-size:.9rem}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer em{font-style:normal;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Vantis<span>.</span>Mind</a>
+    <nav aria-label="Menu">
+      <a href="#uslugi">Usługi</a>
+      <a class="hide-sm" href="#jak">Jak pracujemy</a>
+      <a class="hide-sm" href="#o-nas">O nas</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Myślenie, które daje przewagę</p>
+      <h1>Budujemy zaufanie. <em>Ty zyskujesz klientów.</em></h1>
+      <p class="lead">Klienci wybierają firmy, którym ufają. Pomagamy, by wybierali Twoją. Tworzymy strony, ebooki i systemy pozyskiwania klientów dla małych i średnich firm usługowych.</p>
+      <div class="cta-row">
+        <a class="btn" href="#kontakt">Umów bezpłatną konsultację</a>
+        <a class="btn-ghost" href="#uslugi">Zobacz, co robimy</a>
+      </div>
+      <div class="facts">
+        <div><b>3–4 dni robocze</b>od akceptacji do gotowej strony</div>
+        <div><b>Abonament</b>stała opieka po uruchomieniu</div>
+        <div><b>Bez presji</b>pierwsza rozmowa nic nie kosztuje</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="uslugi">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Usługi</p>
+        <h2>Cztery sposoby, by klienci znaleźli Cię i Ci zaufali</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Strony internetowe</span>
+          <h3>Strona, która pracuje na Twoją markę</h3>
+          <p>Wizytówki i pełne strony firmowe z inteligentnymi dodatkami: kalkulatorem ceny, konfiguratorem AI, prostym zapisem na wizytę.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Ebooki</span>
+          <h3>Ebook, na którym zarabiasz</h3>
+          <p>Przygotowujemy ebook z Twoją wiedzą. Przyciąga nowych klientów, buduje pozycję eksperta i może być osobnym źródłem przychodu.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Pozyskiwanie klientów</span>
+          <h3>System, który zbiera zapytania</h3>
+          <p>Łączymy stronę, ebook i formularze w spójną ścieżkę: od pierwszego kliknięcia do rozmowy z Tobą.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Sklepy internetowe</span>
+          <h3>Sklep gotowy do sprzedaży</h3>
+          <p>Prosty w obsłudze sklep dla Twoich produktów lub usług, z płatnościami i przejrzystą ofertą.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="jak">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Jak pracujemy</p>
+        <h2>Od rozmowy do gotowej strony w kilka dni</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Bezpłatna konsultacja</h3><p>Poznajemy Twoją firmę, klientów i cel strony. Bez zobowiązań.</p></li>
+        <li><h3>Projekt i treści</h3><p>Przygotowujemy układ, teksty i dobór zdjęć dopasowany do Twojej branży.</p></li>
+        <li><h3>Realizacja</h3><p>Budujemy stronę z pomocą narzędzi AI. Gotowa w 3–4 dni robocze.</p></li>
+        <li><h3>Opieka</h3><p>W abonamencie dbamy o aktualizacje, poprawki i rozwój strony.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="o-nas">
+    <div class="wrap about">
+      <blockquote>Zaufanie buduje się latami. My pomagamy, by zaczynało się od pierwszego kliknięcia.</blockquote>
+      <div class="txt">
+        <p class="eyebrow">O nas</p>
+        <p>Za Vantis Mind stoi <strong>dr Magdalena Andrzejewska</strong>, z wykształcenia naukowiec, z doświadczenia praktyk sprzedaży. Przez 25 lat budowała relacje z wymagającymi klientami w branży medycznej, w Polsce i w kilku krajach Europy Środkowo-Wschodniej.</p>
+        <p>Wiemy, że klient kupuje wtedy, gdy ufa. Dlatego łączymy rzetelne podejście z nowoczesnymi narzędziami AI i tworzymy strony, które od początku budują wiarygodność Twojej firmy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="contact">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Porozmawiajmy o Twojej firmie</h2>
+        <p>Napisz kilka zdań o swojej działalności. Odezwiemy się, by umówić bezpłatną konsultację w dogodnym dla Ciebie terminie.</p>
+        <div class="mail">
+          <code id="email">kontakt@vantismind.pl</code>
+          <button class="copy" id="copy" type="button">Kopiuj adres</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 Vantis Mind · vantismind.pl</span>
+    <em>Zaufanie od pierwszego kliknięcia.</em>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var b=this,t=document.getElementById('email').textContent;
+  function done(){b.textContent='Skopiowano';setTimeout(function(){b.textContent='Kopiuj adres'},1800)}
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Zaznaczono – skopiuj Ctrl+C'}
+  try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
